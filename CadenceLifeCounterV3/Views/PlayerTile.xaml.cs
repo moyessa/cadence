@@ -66,7 +66,7 @@ namespace CadenceLifeCounterV3.Views
             hideOpacityAnimation.Duration = TimeSpan.FromMilliseconds(300);
 
             ElementCompositionPreview.SetImplicitShowAnimation(SecondaryCounterOverlay, showAnimationGroup);
-            ElementCompositionPreview.SetImplicitHideAnimation(this, hideOpacityAnimation);
+            ElementCompositionPreview.SetImplicitHideAnimation(SecondaryCounterOverlay, hideOpacityAnimation);
 
         }
     }
