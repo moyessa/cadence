@@ -30,6 +30,12 @@
             </StackPanel>
         </ScrollViewer>
         <StackPanel VerticalAlignment="Bottom" Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1">
+            <Button Width="45" Height="45" Background="Transparent" Style="{ThemeResource ButtonRevealStyle}" Click="HideSecondaryCounterButton_Click">
+                <Button.Content>
+                    <SymbolIcon Symbol="Back" />
+                </Button.Content>
+            </Button>
+            
             <Button Width="45" Height="45" Background="Transparent" Style="{ThemeResource ButtonRevealStyle}">
                 <Button.Content>
                     <SymbolIcon Symbol="Add" />
@@ -43,11 +49,13 @@
                     </Flyout>
                 </Button.Flyout>
             </Button>
+            
             <!--<Button Width="45" Height="45" Background="Transparent" Style="{ThemeResource ButtonRevealStyle}">
                 <Button.Content>
                     <SymbolIcon Symbol="Edit" />
                 </Button.Content>
             </Button>-->
+
         </StackPanel>
     </Grid>
 </UserControl>

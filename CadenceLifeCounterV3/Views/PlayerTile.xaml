@@ -18,24 +18,25 @@
     <Grid Background="{x:Bind Player.Color, Mode=OneWay, Converter={StaticResource colorConverter}}">
         <Grid>
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-
-            <Viewbox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Uniform" StretchDirection="Both" >
-                <TextBlock x:Name="LifeTextBlock" Text="{x:Bind Player.Life, Mode=OneWay}" Foreground="White" />
-            </Viewbox>
-            
-            <TextBlock Grid.Row="1" Text="{x:Bind Player.Name, Mode=OneWay}" HorizontalAlignment="Center" Foreground="White" />
-        </Grid>
-
-        <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <RepeatButton Tag="-1" Grid.Column="0" Style="{StaticResource TileRepeatButton}" Click="HealthRepeatButton_Click" />
-            <RepeatButton Tag="1" Grid.Column="1" Style="{StaticResource TileRepeatButton}" Click="HealthRepeatButton_Click" />
+
+            <Viewbox Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Uniform" StretchDirection="Both" >
+                <TextBlock x:Name="LifeTextBlock" Text="{x:Bind Player.Life, Mode=OneWay}" Foreground="White" />
+            </Viewbox>
+
+            <TextBlock Grid.Row="2" Grid.ColumnSpan="2" Text="{x:Bind Player.Name, Mode=OneWay}" HorizontalAlignment="Center" Foreground="White" />
+
+            <RepeatButton Tag="-1" Grid.Column="0" Grid.RowSpan="3" Style="{StaticResource TileRepeatButton}" Click="HealthRepeatButton_Click" />
+            <RepeatButton Tag="1" Grid.Column="1" Grid.RowSpan="3" Style="{StaticResource TileRepeatButton}" Click="HealthRepeatButton_Click" />
+            
+            <Button Content="Secondary Counters" Click="SecondaryCounterButton_Click" />
         </Grid>
 
         <!--<Grid>
@@ -43,7 +44,7 @@
         </Grid>-->
 
         <Grid>
-            <views:SecondaryCounterOverlay HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Player="{x:Bind Player}" />
+            <views:SecondaryCounterOverlay x:Name="SecondaryCounterOverlay" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Player="{x:Bind Player}" Visibility="Collapsed" />
         </Grid>
     </Grid>
 </UserControl>

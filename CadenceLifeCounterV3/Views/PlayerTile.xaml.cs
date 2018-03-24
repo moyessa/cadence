@@ -35,5 +35,10 @@ namespace CadenceLifeCounterV3.Views
 
             Player.Life += lifeChangeAmount;
         }
+
+        private void SecondaryCounterButton_Click(object sender, RoutedEventArgs e)
+        {
+            SecondaryCounterOverlay.Visibility = Visibility.Visible;
+        }
     }
 }

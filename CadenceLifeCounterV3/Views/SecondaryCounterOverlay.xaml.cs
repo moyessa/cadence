@@ -101,5 +101,10 @@ namespace CadenceLifeCounterV3.Views
             }
 
         }
+
+        private void HideSecondaryCounterButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Visibility = Visibility.Collapsed;
+        }
     }
 }
