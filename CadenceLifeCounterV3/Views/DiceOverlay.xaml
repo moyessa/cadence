@@ -1,0 +1,158 @@
+﻿<UserControl
+    x:Class="CadenceLifeCounterV3.Views.DiceOverlay"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CadenceLifeCounterV3.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Light">
+                    <SolidColorBrush x:Key="PipColorBrush" Color="White" />
+                    <SolidColorBrush x:Key="DieBackgroundBrush" Color="Black" />
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="Dark">
+                    <SolidColorBrush x:Key="PipColorBrush" Color="White" />
+                    <SolidColorBrush x:Key="DieBackgroundBrush" Color="Black" />
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="Side1">
+                    <VisualState.Setters>
+                        <Setter Target="Pip0.Visibility" Value="Collapsed" />
+                        <Setter Target="Pip1.Visibility" Value="Collapsed" />
+                        <Setter Target="Pip2.Visibility" Value="Collapsed" />
+                        <Setter Target="Pip3.Visibility" Value="Visible" />
+                        <Setter Target="Pip4.Visibility" Value="Collapsed" />
+                        <Setter Target="Pip5.Visibility" Value="Collapsed" />
+                        <Setter Target="Pip6.Visibility" Value="Collapsed" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Side2">
+                    <VisualState.Setters>
+                        <Setter Target="Pip0.Visibility" Value="Visible" />
+                        <Setter Target="Pip1.Visibility" Value="Collapsed" />
+                        <Setter Target="Pip2.Visibility" Value="Collapsed" />
+                        <Setter Target="Pip3.Visibility" Value="Collapsed" />
+                        <Setter Target="Pip4.Visibility" Value="Collapsed" />
+                        <Setter Target="Pip5.Visibility" Value="Collapsed" />
+                        <Setter Target="Pip6.Visibility" Value="Visible" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Side3">
+                    <VisualState.Setters>
+                        <Setter Target="Pip0.Visibility" Value="Visible" />
+                        <Setter Target="Pip1.Visibility" Value="Collapsed" />
+                        <Setter Target="Pip2.Visibility" Value="Collapsed" />
+                        <Setter Target="Pip3.Visibility" Value="Visible" />
+                        <Setter Target="Pip4.Visibility" Value="Collapsed" />
+                        <Setter Target="Pip5.Visibility" Value="Collapsed" />
+                        <Setter Target="Pip6.Visibility" Value="Visible" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Side4">
+                    <VisualState.Setters>
+                        <Setter Target="Pip0.Visibility" Value="Visible" />
+                        <Setter Target="Pip1.Visibility" Value="Collapsed" />
+                        <Setter Target="Pip2.Visibility" Value="Visible" />
+                        <Setter Target="Pip3.Visibility" Value="Collapsed" />
+                        <Setter Target="Pip4.Visibility" Value="Visible" />
+                        <Setter Target="Pip5.Visibility" Value="Collapsed" />
+                        <Setter Target="Pip6.Visibility" Value="Visible" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Side5">
+                    <VisualState.Setters>
+                        <Setter Target="Pip0.Visibility" Value="Visible" />
+                        <Setter Target="Pip1.Visibility" Value="Collapsed" />
+                        <Setter Target="Pip2.Visibility" Value="Visible" />
+                        <Setter Target="Pip3.Visibility" Value="Visible" />
+                        <Setter Target="Pip4.Visibility" Value="Visible" />
+                        <Setter Target="Pip5.Visibility" Value="Collapsed" />
+                        <Setter Target="Pip6.Visibility" Value="Visible" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Side6">
+                    <VisualState.Setters>
+                        <Setter Target="Pip0.Visibility" Value="Visible" />
+                        <Setter Target="Pip1.Visibility" Value="Visible" />
+                        <Setter Target="Pip2.Visibility" Value="Visible" />
+                        <Setter Target="Pip3.Visibility" Value="Collapsed" />
+                        <Setter Target="Pip4.Visibility" Value="Visible" />
+                        <Setter Target="Pip5.Visibility" Value="Visible" />
+                        <Setter Target="Pip6.Visibility" Value="Visible" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <Grid.Resources>
+            <Storyboard x:Name="DiceStoryboard">
+                <DoubleAnimation x:Name="TranslateYAnimation" Storyboard.TargetName="DieRectangleTransform" Storyboard.TargetProperty="TranslateY">
+                    <DoubleAnimation.EasingFunction>
+                        <ExponentialEase EasingMode="EaseOut" Exponent="8" />
+                    </DoubleAnimation.EasingFunction>
+                </DoubleAnimation>
+                <DoubleAnimation x:Name="TranslateXAnimation" Storyboard.TargetName="DieRectangleTransform" Storyboard.TargetProperty="TranslateX">
+                    <DoubleAnimation.EasingFunction>
+                        <ExponentialEase EasingMode="EaseOut" Exponent="8" />
+                    </DoubleAnimation.EasingFunction>
+                </DoubleAnimation>
+                <DoubleAnimation x:Name="RotationAnimation" Storyboard.TargetName="DieRectangleTransform" Storyboard.TargetProperty="Rotation">
+                    <DoubleAnimation.EasingFunction>
+                        <ExponentialEase EasingMode="EaseOut" Exponent="8" />
+                    </DoubleAnimation.EasingFunction>
+                </DoubleAnimation>
+            </Storyboard>
+        </Grid.Resources>
+
+        <Button x:Name="RollDiceButton" Click="Button_Click" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Button.Background>
+                <SolidColorBrush Color="Black" Opacity=".6" />
+            </Button.Background>
+            <Button.Content>
+                <TextBlock Text="Roll a D6" Foreground="White" TextWrapping="WrapWholeWords" Style="{ThemeResource HeaderTextBlockStyle}"/>
+            </Button.Content>
+        </Button>
+        <Grid x:Name="RemoveDiceGrid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Tapped="Grid_Tapped" Visibility="Collapsed" Background="Transparent"/>
+
+        <Grid x:Name="DieRectangle" HorizontalAlignment="Left" VerticalAlignment="Top" Tapped="Grid_Tapped">
+            <Grid.RenderTransform>
+                <CompositeTransform x:Name="DieRectangleTransform" />
+            </Grid.RenderTransform>
+
+            <Rectangle RadiusX="5" RadiusY="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stroke="Black" StrokeThickness="0" Fill="{StaticResource DieBackgroundBrush}" />
+
+            <Grid Margin="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Ellipse x:Name="Pip0" Grid.Row="0" Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Fill="{StaticResource PipColorBrush}" Margin="2" />
+                <Ellipse x:Name="Pip1" Grid.Row="0" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Fill="{StaticResource PipColorBrush}" Margin="2" />
+                <Ellipse x:Name="Pip2" Grid.Row="0" Grid.Column="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Fill="{StaticResource PipColorBrush}" Margin="2" />
+                <Ellipse x:Name="Pip3" Grid.Row="1" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Fill="{StaticResource PipColorBrush}" Margin="2" />
+                <Ellipse x:Name="Pip4" Grid.Row="2" Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Fill="{StaticResource PipColorBrush}" Margin="2" />
+                <Ellipse x:Name="Pip5" Grid.Row="2" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Fill="{StaticResource PipColorBrush}" Margin="2" />
+                <Ellipse x:Name="Pip6" Grid.Row="2" Grid.Column="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Fill="{StaticResource PipColorBrush}" Margin="2" />
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,53 @@
+﻿<UserControl
+    x:Class="CadenceLifeCounterV3.Views.SecondaryCounterControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CadenceLifeCounterV3.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:models="using:CadenceLifeCounterV3.Models">
+
+    <UserControl.Resources>
+        <models:ColorToBrushConverter x:Key="colorConverter" />
+    </UserControl.Resources>
+
+    <Grid Margin="5" BorderThickness="1" >
+        <Grid.Background>
+            <SolidColorBrush Color="{x:Bind Counter.CounterColor.SwatchColor, Mode=OneWay}"  Opacity=".2" />
+        </Grid.Background>
+        <Grid.BorderBrush>
+            <SolidColorBrush Color="{x:Bind Counter.CounterColor.SwatchColor, Mode=OneWay}"  />
+        </Grid.BorderBrush>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel VerticalAlignment="Center" Margin="10" Width="60" >
+            <ContentPresenter Content="{x:Bind Counter.CounterIcon}" HorizontalAlignment="Center" />
+            <TextBlock Text="{x:Bind Counter.CounterName}" HorizontalAlignment="Center" TextTrimming="CharacterEllipsis" Style="{ThemeResource CaptionTextBlockStyle}"/>
+        </StackPanel>
+
+        <Viewbox Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" MaxHeight="45">
+            <TextBlock Text="{x:Bind Counter.Value, Mode=OneWay}"  />
+        </Viewbox>
+
+        <RepeatButton Width="45" Height="45" Grid.Column="2" Margin="5" Click="AddRepeatButton_Click" Interval="500" Style="{ThemeResource RepeatButtonRevealStyle}" >
+            <RepeatButton.Content>
+                <SymbolIcon Symbol="Add" />
+            </RepeatButton.Content>
+        </RepeatButton>
+
+        <RepeatButton Width="45" Height="45" Grid.Column="3" Margin="5" Click="RemoveRepeatButton_Click" Interval="500" Style="{ThemeResource RepeatButtonRevealStyle}">
+            <RepeatButton.Content>
+                <SymbolIcon Symbol="Remove" />
+            </RepeatButton.Content>
+        </RepeatButton>
+
+
+
+    </Grid>
+</UserControl>

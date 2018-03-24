@@ -1,0 +1,92 @@
+﻿<UserControl
+    x:Class="CadenceLifeCounterV3.Views.SettingsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CadenceLifeCounterV3.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <ScrollViewer Margin="0,0,-12,0">
+        <StackPanel>
+            <TextBlock Text="Look and Feel" Style="{StaticResource TitleTextBlockStyle}" />
+            <ToggleSwitch Header="Use dark theme:" Toggled="ThemeToggleSwitch_Toggled" />
+            <ToggleSwitch Header="Keep screen on:" Toggled="ScreenOnToggleSwitch_Toggled" />
+
+            <TextBlock Text="Format" Style="{StaticResource TitleTextBlockStyle}" />
+            <TextBlock Text="Starting life (game will reset):" />
+            <Grid x:Name="StartingLifeRadioButtonGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <RadioButton Content="20" Grid.Column="0" Checked="StartingLifeRadioButton_Checked"/>
+                <RadioButton Content="30" Grid.Column="1" Checked="StartingLifeRadioButton_Checked"/>
+                <RadioButton Content="40" Grid.Column="2" Checked="StartingLifeRadioButton_Checked"/>
+            </Grid>
+            <!--<ToggleSwitch Header="Resetting game resets stopwatch:" />-->
+
+            <TextBlock Text="Secondary Counters" Style="{StaticResource TitleTextBlockStyle}" />
+
+            <TextBlock Text="Help and Feedback" Style="{StaticResource TitleTextBlockStyle}" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <SymbolIcon Symbol="Send" Margin="0,0,11,0" />
+                <HyperlinkButton x:Name="ContactButton" Grid.Column="1" Click="ContactButton_Click" >
+                    <HyperlinkButton.Content>
+                        <TextBlock Text="Email Cadence for support or feedback" TextWrapping="WrapWholeWords" />
+                    </HyperlinkButton.Content>
+                </HyperlinkButton>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <SymbolIcon Symbol="OutlineStar" Margin="0,0,11,0" />
+                <HyperlinkButton x:Name="RateButton" Grid.Column="1" Click="RateButton_Click" >
+                    <HyperlinkButton.Content>
+                        <TextBlock Text="Please rate Cadence on the Windows Store!" TextWrapping="WrapWholeWords" />
+                    </HyperlinkButton.Content>
+                </HyperlinkButton>
+            </Grid>
+
+            <TextBlock Text="About" Style="{StaticResource TitleTextBlockStyle}" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <SymbolIcon Symbol="Manage" Grid.Column="0" Margin="0,0,11,0" />
+                <TextBlock Grid.Column="1" Text="Cadence Life Counter has no affiliation with, nor is endorsed by, Wizards of the Coast, Hasbro, or Magic: The Gathering." TextWrapping="WrapWholeWords" />
+            </Grid>
+            <Grid Margin="0,5,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <SymbolIcon Grid.Column="0" Symbol="Font" Margin="0,0,11,0" />
+                <TextBlock Grid.Column="1" TextWrapping="WrapWholeWords">
+                                            <Run>Life total font: Secret Code, created by Matthew Welch. </Run>
+                                            <Hyperlink NavigateUri="http://www.squaregear.net/fonts/">http://www.squaregear.net/fonts/</Hyperlink>
+                </TextBlock>
+            </Grid>
+            <Grid Margin="0,5,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <SymbolIcon Grid.Column="0" Symbol="Admin" Margin="0,0,11,0" />
+                <TextBlock Grid.Column="1" Text="Copyright 2014-17, Steven Moyes" TextWrapping="WrapWholeWords" />
+            </Grid>
+
+        </StackPanel>
+    </ScrollViewer>
+    
+</UserControl>

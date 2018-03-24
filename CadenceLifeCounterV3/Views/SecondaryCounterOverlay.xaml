@@ -1,0 +1,53 @@
+﻿<UserControl
+    x:Class="CadenceLifeCounterV3.Views.SecondaryCounterOverlay"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CadenceLifeCounterV3.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400"
+    xmlns:models="using:CadenceLifeCounterV3.Models"
+    xmlns:views="using:CadenceLifeCounterV3.Views">
+
+    <Grid Background="{ThemeResource SystemControlAcrylicElementBrush}" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <ScrollViewer>
+            <StackPanel x:Name="CountersPanel">
+                <local:SecondaryCounterControl>
+                    <views:SecondaryCounterControl.Counter>
+                        <models:SecondaryCounterModel Player="{x:Bind Player}" CounterName="Life" Value="{x:Bind Player.Life, Mode=OneWay}" CounterColor="{x:Bind Player.Color, Mode=OneWay}">
+                            <models:SecondaryCounterModel.CounterIcon>
+                                <SymbolIcon Symbol="Favorite" />
+                            </models:SecondaryCounterModel.CounterIcon>
+                        </models:SecondaryCounterModel>
+                    </views:SecondaryCounterControl.Counter>
+                </local:SecondaryCounterControl>
+            </StackPanel>
+        </ScrollViewer>
+        <StackPanel VerticalAlignment="Bottom" Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1">
+            <Button Width="45" Height="45" Background="Transparent" Style="{ThemeResource ButtonRevealStyle}">
+                <Button.Content>
+                    <SymbolIcon Symbol="Add" />
+                </Button.Content>
+                <Button.Flyout>
+                    <Flyout x:Name="ButtonFlyout" Closed="Flyout_Closed">
+                        <StackPanel MinWidth="200" MaxWidth="250">
+                            <TextBox x:Name="NewCounterTextBox"  PlaceholderText="New counter name" KeyDown="NewCounterTextBox_KeyDown"/>
+                            <Button Content="Confirm" Style="{ThemeResource AccentButtonStyle}" HorizontalAlignment="Stretch" Margin="0,5,0,0" Click="ConfirmButton_Click"/>
+                        </StackPanel>
+                    </Flyout>
+                </Button.Flyout>
+            </Button>
+            <!--<Button Width="45" Height="45" Background="Transparent" Style="{ThemeResource ButtonRevealStyle}">
+                <Button.Content>
+                    <SymbolIcon Symbol="Edit" />
+                </Button.Content>
+            </Button>-->
+        </StackPanel>
+    </Grid>
+</UserControl>

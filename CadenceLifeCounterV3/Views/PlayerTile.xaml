@@ -1,0 +1,49 @@
+﻿<UserControl
+    x:Class="CadenceLifeCounterV3.Views.PlayerTile"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CadenceLifeCounterV3.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:models="using:CadenceLifeCounterV3.Models"
+    xmlns:views="using:CadenceLifeCounterV3.Views"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <UserControl.Resources>
+        <models:ColorToBrushConverter x:Key="colorConverter" />
+    </UserControl.Resources>
+
+    <Grid Background="{x:Bind Player.Color, Mode=OneWay, Converter={StaticResource colorConverter}}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Viewbox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Uniform" StretchDirection="Both" >
+                <TextBlock x:Name="LifeTextBlock" Text="{x:Bind Player.Life, Mode=OneWay}" Foreground="White" />
+            </Viewbox>
+            
+            <TextBlock Grid.Row="1" Text="{x:Bind Player.Name, Mode=OneWay}" HorizontalAlignment="Center" Foreground="White" />
+        </Grid>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <RepeatButton Tag="-1" Grid.Column="0" Style="{StaticResource TileRepeatButton}" Click="HealthRepeatButton_Click" />
+            <RepeatButton Tag="1" Grid.Column="1" Style="{StaticResource TileRepeatButton}" Click="HealthRepeatButton_Click" />
+        </Grid>
+
+        <!--<Grid>
+            <views:DiceOverlay Player="{x:Bind Player}" />
+        </Grid>-->
+
+        <Grid>
+            <views:SecondaryCounterOverlay HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Player="{x:Bind Player}" />
+        </Grid>
+    </Grid>
+</UserControl>
