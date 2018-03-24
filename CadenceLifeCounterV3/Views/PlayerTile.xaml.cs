@@ -69,5 +69,10 @@ namespace CadenceLifeCounterV3.Views
             ElementCompositionPreview.SetImplicitHideAnimation(SecondaryCounterOverlay, hideOpacityAnimation);
 
         }
+
+        private void DiceButton_Click(object sender, RoutedEventArgs e)
+        {
+            DiceOverlay.Visibility = Visibility.Visible;
+        }
     }
 }
