@@ -35,19 +35,16 @@
             <TextBlock Text="{x:Bind Counter.Value, Mode=OneWay}"  />
         </Viewbox>
 
-        <RepeatButton Width="45" Height="45" Grid.Column="2" Margin="5" Click="AddRepeatButton_Click" Interval="500" Style="{ThemeResource RepeatButtonRevealStyle}" >
-            <RepeatButton.Content>
-                <SymbolIcon Symbol="Add" />
-            </RepeatButton.Content>
-        </RepeatButton>
-
-        <RepeatButton Width="45" Height="45" Grid.Column="3" Margin="5" Click="RemoveRepeatButton_Click" Interval="500" Style="{ThemeResource RepeatButtonRevealStyle}">
+        <RepeatButton Width="45" Height="45" Grid.Column="2" Margin="5" Click="RemoveRepeatButton_Click" Interval="500" Style="{ThemeResource RepeatButtonRevealStyle}">
             <RepeatButton.Content>
                 <SymbolIcon Symbol="Remove" />
             </RepeatButton.Content>
         </RepeatButton>
 
-
-
+        <RepeatButton Width="45" Height="45" Grid.Column="3" Margin="5" Click="AddRepeatButton_Click" Interval="500" Style="{ThemeResource RepeatButtonRevealStyle}" >
+            <RepeatButton.Content>
+                <SymbolIcon Symbol="Add" />
+            </RepeatButton.Content>
+        </RepeatButton>
     </Grid>
 </UserControl>
