@@ -50,7 +50,7 @@
                     <FontIcon FontFamily="Segoe UI Symbol" Glyph="&#x2684;" FontSize="32" />
                 </Button>-->
 
-                <Button HorizontalAlignment="Left" Background="Transparent" Width="40" Height="40" Click="DiceButton_Click" >
+                <Button HorizontalAlignment="Left" Background="Transparent" Width="40" Height="40" Click="DiceButton_Click" IsEnabled="False" >
                     <Button.Resources>
                         <ResourceDictionary>
                             <x:Double x:Key="PipSize">5</x:Double>
