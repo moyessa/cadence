@@ -13,6 +13,8 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using CadenceLifeCounterV3.Models;
+using Windows.UI.Composition;
+using Windows.UI.Xaml.Hosting;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
@@ -27,6 +29,8 @@ namespace CadenceLifeCounterV3.Views
             this.InitializeComponent();
 
             //Player = new PlayerModel();
+
+            SetupImplicitAnimations();
         }
 
         private void HealthRepeatButton_Click(object sender, RoutedEventArgs e)
@@ -39,6 +43,31 @@ namespace CadenceLifeCounterV3.Views
         private void SecondaryCounterButton_Click(object sender, RoutedEventArgs e)
         {
             SecondaryCounterOverlay.Visibility = Visibility.Visible;
+        }
+
+        private void SetupImplicitAnimations()
+        {
+            var compositor = ElementCompositionPreview.GetElementVisual(SecondaryCounterOverlay).Compositor;
+
+            var showAnimationGroup = compositor.CreateAnimationGroup();
+
+            var showOpacityAnimation = compositor.CreateScalarKeyFrameAnimation();
+            showOpacityAnimation.Target = nameof(Visual.Opacity);
+            showOpacityAnimation.InsertKeyFrame(0f, 0f);
+            showOpacityAnimation.InsertKeyFrame(1.0f, 1.0f);
+            showOpacityAnimation.Duration = TimeSpan.FromMilliseconds(300);
+
+            showAnimationGroup.Add(showOpacityAnimation);
+
+            var hideOpacityAnimation = compositor.CreateScalarKeyFrameAnimation();
+            hideOpacityAnimation.Target = nameof(Visual.Opacity);
+            hideOpacityAnimation.InsertKeyFrame(0f, 1.0f);
+            hideOpacityAnimation.InsertKeyFrame(1.0f, 0.0f);
+            hideOpacityAnimation.Duration = TimeSpan.FromMilliseconds(300);
+
+            ElementCompositionPreview.SetImplicitShowAnimation(SecondaryCounterOverlay, showAnimationGroup);
+            ElementCompositionPreview.SetImplicitHideAnimation(this, hideOpacityAnimation);
+
         }
     }
 }
