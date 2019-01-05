@@ -66,7 +66,6 @@ namespace CadenceLifeCounterV3.Views
 
         public void RollAndAnimateDie()
         {
-            RollDiceButton.Visibility = Visibility.Collapsed;
             RemoveDiceGrid.Visibility = Visibility.Visible;
 
             GetFaceBasedOnValue(GetDieValue());
@@ -95,55 +94,42 @@ namespace CadenceLifeCounterV3.Views
             int minVal = (int)(DieRectangle.ActualWidth * -2);
             int maxVal = (int)(DieRectangle.ActualWidth);
             return rand.Next(minVal, maxVal);
-            //return maxVal;
-            //return minVal;
         }
         int GetTranslateXEnd()
         {
             int minVal = (int)(LayoutRoot.ActualWidth / 2);
             int maxVal = (int)(LayoutRoot.ActualWidth - DieRectangle.Width);
             return rand.Next(minVal, maxVal);
-            //return maxVal;
-            //return minVal;
         }
         int GetTranslateYStart()
         {
             int minVal = (int)(-1.5 * DieRectangle.Height);
             int maxVal = (int)(LayoutRoot.ActualHeight / 3);
             return rand.Next(minVal, maxVal);
-            //return maxVal;
-            //return minVal;
         }
         int GetTranslateYEnd()
         {
             int minVal = (int)(LayoutRoot.ActualHeight / 2);
             int maxVal = (int)(LayoutRoot.ActualHeight - (1.5 * DieRectangle.Height));
             return rand.Next(minVal, maxVal);
-            //return maxVal;
-            //return minVal;
         }
         int GetRotationStart()
         {
             int minVal = 20;
             int maxVal = 50;
             return rand.Next(minVal, maxVal);
-            //return maxVal;
-            //return minVal;
         }
         int GetRotationEnd()
         {
             int minVal = 0;
             int maxVal = 220;
             return rand.Next(minVal, maxVal);
-            //return maxVal;
-            //return minVal;
         }
 
         private void Grid_Tapped(object sender, TappedRoutedEventArgs e)
         {
             DiceStoryboard.Stop();
             DieRectangle.Visibility = Visibility.Collapsed;
-            RollDiceButton.Visibility = Visibility.Visible;
             RemoveDiceGrid.Visibility = Visibility.Collapsed;
         }
     }

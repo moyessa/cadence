@@ -50,7 +50,7 @@
                     <FontIcon FontFamily="Segoe UI Symbol" Glyph="&#x2684;" FontSize="32" />
                 </Button>-->
 
-                <Button HorizontalAlignment="Left" Background="Transparent" Width="40" Height="40" Click="DiceButton_Click" IsEnabled="False" >
+                <Button HorizontalAlignment="Left" Background="Transparent" Width="40" Height="40" Click="DiceButton_Click" IsEnabled="True" >
                     <Button.Resources>
                         <ResourceDictionary>
                             <x:Double x:Key="PipSize">5</x:Double>
@@ -87,13 +87,10 @@
                     </Canvas>
                 </Button>
             </Grid>
-
-
-
         </Grid>
 
         <Grid>
-            <views:DiceOverlay x:Name="DiceOverlay" Player="{x:Bind Player}" Visibility="Collapsed" />
+            <views:DiceOverlay x:Name="DiceOverlay" Player="{x:Bind Player}" Visibility="Visible" />
         </Grid>
 
         <Grid>

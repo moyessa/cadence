@@ -116,14 +116,6 @@
             </Storyboard>
         </Grid.Resources>
 
-        <Button x:Name="RollDiceButton" Click="Button_Click" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <Button.Background>
-                <SolidColorBrush Color="Black" Opacity=".6" />
-            </Button.Background>
-            <Button.Content>
-                <TextBlock Text="Roll a D6" Foreground="White" TextWrapping="WrapWholeWords" Style="{ThemeResource HeaderTextBlockStyle}"/>
-            </Button.Content>
-        </Button>
         <Grid x:Name="RemoveDiceGrid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Tapped="Grid_Tapped" Visibility="Collapsed" Background="Transparent"/>
 
         <Grid x:Name="DieRectangle" HorizontalAlignment="Left" VerticalAlignment="Top" Tapped="Grid_Tapped">

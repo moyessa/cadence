@@ -72,7 +72,7 @@ namespace CadenceLifeCounterV3.Views
 
         private void DiceButton_Click(object sender, RoutedEventArgs e)
         {
-            DiceOverlay.Visibility = Visibility.Visible;
+            DiceOverlay.RollAndAnimateDie();
         }
     }
 }
